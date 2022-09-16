@@ -2,18 +2,18 @@
 
 ## Overview
 
-Add routes to the web client actions.
+Prevent publishing products with MTO and Manufacture routes with no BOM, and products with MTO and Buy routes with no seller and prevent it from being published, and create a filter for these issues.
 
 ## Purpose
 
 ### Why we decide to provide this module?
 
-This will allows you to add routes to the web client actions so that you can use in an email or message.
+This module will create a warning to tell the customer if the MTO and Manufacture routes are selected with no BOM or if the MTO and Buy routes are selected with no seller to avoid failures on Order creation. It will prevent it from publishing these products, and create a filter for these issues.
 
 ## Features
 
 * We support both community and enterprise editions
-* Currently support versions 10.0, 11.0, 12.0 and 13.0
+* Currently support version 14.0 , 15.0
 
 ## How to install
 
@@ -24,14 +24,9 @@ This will allows you to add routes to the web client actions so that you can use
 
 ## How to use
 
-Add one of those routes after your server url:
-
-* /in/leads/
-* /in/orders/
-* /in/contacts/
-* /in/invoices/
-
-See it in action: [here](https://twitter.com/diogormcduarte/status/1098703437611573248)
+	* Select both MTO and Buy routes with no seller, a warning will pop-up and tell you **This product has no Supplier**. And it will prevent you from publishing this product
+	* Select both MTO and Manufacture routes with no BOM, a warning will pop-up and tell you **This product has no BOM**. And it will prevent you from publishing this product
+	* Create a filter that contains all these products.
 
 ## Support
 
