@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_form_mto_warning_inherit" model="ir.ui.view">
+        <field name="name">product_template_form_mto_warning_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='image_1920']" position="before">
+                <field name="warning_notification_buy" invisible="1"/>
+                <div role="alert" class="alert alert-danger" style="height:40px, width:30px, margin-bottom:1px"
+                     attrs="{'invisible':[('warning_notification_buy','=',False)]}">
+                    This product has no Supplier
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='image_1920']" position="before">
+                <field name="warning_notification_mrp" invisible="1"/>
+                <div role="alert" class="alert alert-danger" style="height:40px, width:30px, margin-bottom:1px"
+                     attrs="{'invisible':[('warning_notification_mrp','=',False)]}">
+                    This product has no BoM
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_mto_warning_inherit" model="ir.ui.view">
+        <field name="name">product.template.search.mto_warning_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='consumable']" position="after">
+                <separator/>
+                <filter string="Has MTO Issues" name="mto_issues" domain="['|',('warning_notification_mrp', '=', True),('warning_notification_buy', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
+
+
